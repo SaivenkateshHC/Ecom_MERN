@@ -12,6 +12,14 @@ const productSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    user: { // Add this field
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    username: { // Add this field
+        type: String,
+        ref: 'User'
+    }
     });
 
 

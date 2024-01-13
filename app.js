@@ -1,6 +1,7 @@
 const express = require("express");
 const { json, urlencoded } = require("body-parser");
 const userApiRoutes = require("./routes/userApi");
+const mainApiRoutes = require("./routes/mainApi");
 const productApiRoutes = require("./routes/productApi");
 const mongoose = require('mongoose');
 const path = require('path');
@@ -22,6 +23,7 @@ const port = 3000;
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
+app.use('/', mainApiRoutes);
 app.use("/api/user", userApiRoutes);
 app.use("/api/product", productApiRoutes);
 app.get("/", (req, res) => {
