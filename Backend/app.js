@@ -6,8 +6,9 @@ const productApiRoutes = require("./routes/productApi");
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
-dotenv.config({path:path.join(__dirname, './.env')})
+dotenv.config({path:path.join(__dirname, '../.env')})
 
 const mongoUri = process.env.MONGO_URI;
 
@@ -15,10 +16,14 @@ mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
-
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Enable credentials (cookies, Authorization headers)
+};
 const app = express();
-const port = 3000;
+const port = 8000;
+app.use(cors(corsOptions));
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
