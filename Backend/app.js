@@ -28,7 +28,7 @@ app.use(cors(corsOptions));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-app.use('/', mainApiRoutes);
+app.use('/api', mainApiRoutes);
 app.use("/api/user", userApiRoutes);
 app.use("/api/product", productApiRoutes);
 app.get("/", (req, res) => {
